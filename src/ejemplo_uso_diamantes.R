@@ -7,6 +7,7 @@ head(diamonds)
 set.seed(280572)
 diamonds.2 <- subset(diamonds, cut!='Fair' & clarity!='I1' & clarity!='IF')
 
+## dlply - de tabla de datos a lista de modelos
 modelos <- dlply(diamonds.2, c('cut','color', 'clarity'), 
     function(df){
         if(nrow(df)>1){
@@ -16,9 +17,12 @@ modelos <- dlply(diamonds.2, c('cut','color', 'clarity'),
         }    
     })   
 
+
+## graficar todos los coeficientes.
 coeficientes <- ldply(modelos, coef)
 ggplot(coeficientes, aes(x=`(Intercept)`, y=`log(price/2500)`)) + geom_point()
 
+## usamos sim para simular de posteriores de los coeficientes.
 coefs.simular <- ldply(modelos, function(mod){
     if(!is.null(mod)){
         simular <- sim(mod, n.sims = 500)
@@ -26,6 +30,8 @@ coefs.simular <- ldply(modelos, function(mod){
     }    
 })
 
+
+## gráfica de resumen para coeficientes
 coefs.resumen <- ddply(coefs.simular, c('cut', 'clarity', 'color'), 
     summarise,
     elast.precio=mean(log.price.2500.),
