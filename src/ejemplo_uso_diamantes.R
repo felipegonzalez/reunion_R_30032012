@@ -41,5 +41,5 @@ ggplot(subset(coefs.resumen, clarity!='I1'), aes(x = color, y = elast.precio,
 
 
 # Gráfica difícil de leer:
-ggplot(diamonds.2, aes(x=log(price), y=log(carat), colour=color, group=color)) +
- facet_grid(color+cut~clarity) + geom_smooth() + geom_point(size=1, alpha=0.5)
+# ggplot(diamonds.2, aes(x=log(price), y=log(carat), colour=color, group=color)) +
+#  facet_grid(color+cut~clarity) + geom_smooth() + geom_point(size=1, alpha=0.5)
