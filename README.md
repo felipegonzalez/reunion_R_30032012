@@ -4,7 +4,7 @@ en el ITAM (30 marzo 2012).
 Referencias: 
 ------------
 
-1. **Split apply combine, plyr:**
+1. **Split apply combine, paquete plyr:**
 Hadley Wickham, [The split-apply-combine strategy for data analysis](http://www.jstatsoft.org/v40/i01)
 
 2. **Frecuencia de uso de funciones:**
